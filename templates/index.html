@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBAMS - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem;
+        }
+
+        .block {
+            width: 350px; /* Increased width */
+            height: 340px; /* Increased height */
+            padding: 1.5rem; /* Increased padding */
+            border-radius: 15px; /* Increased border radius */
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            transition: transform 0.5s ease-in-out;
+            margin: 0 15px; /* Increased margin */
+            transform-style: preserve-3d;
+        }
+
+        .block:hover {
+            transform: rotateY(180deg);
+        }
+
+        .front,
+        .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .front {
+            z-index: 2;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            background-color: white;
+            z-index: 1;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .block h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .block:hover .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 150px; /* Increased image size */
+            height: 150px; /* Increased image size */
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>IBAMS</h1>
+    </header>
+
+    <main>
+        <div class="block">
+            <div class="front">
+                <img src="{{ url_for('static', filename='AdminImage.jpg') }}" alt="Admin Image">
+                <h3>Admin Block</h3>
+            </div>
+            <div class="back">
+                <div class="login-form" id="adminLoginForm">
+                    <form action="{{ url_for('admin') }}" method="post">
+                        <label for="Admin_username">Admin ID:</label>
+                        <input type="text" id="Admin_username" name="Admin_username" placeholder="Enter Admin ID">
+
+                        <label for="Admin_Password">Password:</label>
+                        <input type="password" id="Admin_Password" name="Admin_Password" placeholder="Enter Password">
+
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+                    {% if error %}
+                        <p class="error">{{ error }}</p>
+                    {% endif %}
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="front">
+                <img src="{{ url_for('static', filename='TeacherImage.jpg') }}" alt="Teacher Image">
+                <h3>Teacher Block</h3>
+            </div>
+            <div class="back">
+                <div class="login-form" id="teacherLoginForm">
+                    <form action="{{ url_for('employee') }}" method="post">
+                        <label for="Employee_username">Employee ID:</label>
+                        <input type="text" id="Employee_username" name="Employee_username" placeholder="Enter Employee ID">
+
+                        <label for="Employee_Password">Password:</label>
+                        <input type="password" id="Employee_Password" name="Employee_Password" placeholder="Enter Password">
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="front">
+                <img src="{{ url_for('static', filename='StudentImage.jpg') }}" alt="Student Image">
+                <h3>Student Block</h3>
+            </div>
+            <div class="back">
+                <form action="{{ url_for('login') }}" method="post">
+                    <label for="username">Student ID:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter Student ID">
+
+                    <label for="year">Password:</label>
+                    <input type="password" id="year" name="year" placeholder="Enter Password">
+
+                    <!-- Added drop-down boxes for branch and year -->
+                    <label for="branch">Branch:</label>
+                    <select id="branch" name="branch">
+                        <option value="" disabled selected>Select</option>
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="EEE">EEE</option>
+                        <option value="ECE">ECE</option>
+                        <option value="Mech">Mech</option>
+                        <option value="Civil">Civil</option>
+                        <option value="AI&ML">AI&ML</option>
+                        <option value="AIDS">AIDS</option>
+                    </select>
+
+                    <label for="studentYear">Year:</label>
+                    <select id="studentYear" name="studentYear">
+                        <option value="" disabled selected>Select</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function login(role) {
+            // Redirect based on the role
+            if (role === 'admin') {
+                alert('Admin login successful! Redirecting to admin page...');
+                // Add admin page redirection logic here
+                window.location.href = 'admin.html';
+            } else if (role === 'teacher') {
+                alert('Teacher login successful! Redirecting to teacher page...');
+                // Add teacher page redirection logic here
+                 window.location.href = 'employee.html';
+            } else if (role === 'student') {
+                alert('Student login successful! Redirecting to student page...');
+                // Add student page redirection logic here
+                window.location.href = 'student_display.html'; // Change to the actual student page URL
+            }
+        }
+    </script>
+
+    <!-- Additional content or scripts can be added here -->
+
+</body>
+</html>

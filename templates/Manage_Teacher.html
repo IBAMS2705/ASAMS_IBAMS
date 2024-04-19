@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Teachers</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manage Teachers</h1>
+    <form action="/add_teacher" method="post">
+        <label for="teacher_name">Teacher Name:</label>
+        <input type="text" name="teacher_name" id="teacher_name" required>
+
+        <label for="teacher_id">Teacher ID:</label>
+        <input type="text" name="teacher_id" id="teacher_id" required>
+
+        <label for="teacher_department">Department:</label>
+        <input type="text" name="teacher_department" id="teacher_department" required>
+
+        <label for="teacher_email">Email:</label>
+        <input type="email" name="teacher_email" id="teacher_email" required>
+
+        <label for="teacher_mobile">Mobile:</label>
+        <input type="text" name="teacher_mobile" id="teacher_mobile" required>
+
+        <input type="submit" value="Add Teacher">
+    </form>
+</body>
+</html>

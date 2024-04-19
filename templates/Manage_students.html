@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Manage Students</h1>
+
+    <form action="{{ url_for('manage_students') }}" method="post" enctype="multipart/form-data">
+        <!-- Add other form fields as needed -->
+        <label for="new_student_name">Student Name:</label>
+        <input type="text" name="new_student_name" id="new_student_name" required>
+
+        <label for="new_student_registration">Registration Number:</label>
+        <input type="text" name="new_student_registration" id="new_student_registration" required>
+
+        <label for="new_student_branch">Branch:</label>
+        <input type="text" name="new_student_branch" id="new_student_branch" required>
+
+        <label for="new_student_year">Year of Study:</label>
+        <input type="text" name="new_student_year" id="new_student_year" required>
+
+        <label for="new_student_mail">E-mail ID:</label>
+        <input type="text" name="new_student_mail" id="new_student_mail" required>
+
+        <label for="student_images">Upload Student Images:</label>
+        <input type="file" id="student_images" name="student_images" multiple>
+        <button type="submit">Upload Images</button>
+        <input type="submit" value="Add Student">
+    </form>
+
+</body>
+</html>
